@@ -2,8 +2,6 @@
 """
 import logging
 import datetime
-from django.http import HttpResponse
-from rest_framework.response import Response
 from django.http import JsonResponse
 
 from database.models import *

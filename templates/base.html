@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Backstage Test</title>
+
+    <!-- vendor css -->
+    <link href="{% static 'theme/bracketplus/lib/@fortawesome/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'theme/bracketplus/css/bracket.css' %}">
+      <link rel="stylesheet" href="{% static 'backstage/css/style.css' %}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>#}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{% static 'theme/bracketplus/lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- ########## START: LEFT PANEL ########## -->
+    <div class="br-logo"><a href=""><span></span>Backstage Test<span></span></a></div>
+    <div class="br-sideleft sideleft-scrollbar">
+      <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
+          <ul class="br-sideleft-menu">
+            <li class="br-menu-item">
+              <a href="{% url 'home-view' %}" class="br-menu-link {% if menu_id == 'home' %}active{% endif %}">
+                <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
+                <span class="menu-item-label">Home</span>
+              </a>
+            </li>
+          </ul>
+    </div><!-- br-sideleft -->
+    <!-- ########## END: LEFT PANEL ########## -->
+
+    <!-- ########## START: HEAD PANEL ########## -->
+    <div class="br-header">
+      <div class="br-header-left">
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+      </div><!-- br-header-left -->
+    </div><!-- br-header -->
+    <!-- ########## END: HEAD PANEL ########## -->
+
+    <!-- ########## START: MAIN PANEL ########## -->
+    <div class="br-mainpanel">
+      {% block page_header %}
+      {% endblock %}
+
+      <div class="page-content">
+        {% block page_content %}
+        {% endblock %}
+      </div>
+
+      {% block page_js %}
+      {% endblock %}
+
+      <footer class="br-footer">
+        <div class="footer-left">
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

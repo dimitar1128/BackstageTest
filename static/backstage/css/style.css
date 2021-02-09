@@ -1,0 +1,31 @@
+:root {
+    --main-color: #45536d;
+    --main-dark-color: #232a38;
+}
+
+
+.backstage-table {
+    color: black;
+    margin-top: 10px !important;
+    width: 100% !important;
+    border: 1px solid lightgray;
+} .backstage-table thead {
+    background-color: var(--main-color);
+    color: white;
+} .backstage-table th {
+    text-align: center;
+    height: 40px;
+    padding: 5px !important;
+    border-right: 1px solid white;
+} .backstage-table thead th:last-child {
+    border-right-color: var(--main-color);
+} .backstage-table tbody tr td {
+    font-size: 17px;
+    border-top: 1px solid #bfbfbf;
+    padding: 5px;
+    word-break: break-word;
+    text-align: center;
+    border-right: 1px solid lightgray;
+} .backstage-table tbody tr:nth-child(2n) {
+    background-color: #f9f9f9;
+}

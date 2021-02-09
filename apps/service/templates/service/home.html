@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block page_header %}
+    <div class="br-pagetitle">
+        <i class="icon ion-ios-home-outline"></i>
+        <div>
+          <h4>Home</h4>
+          <p class="mg-b-0">Calculate difference between
+            the square of the sum of the same first n natural numbers
+        and
+            the sum of the squares of the first n natural numbers</p>
+        </div>
+    </div>
+{% endblock %}
+{% block page_content %}
+    <div id="main_div" style="width:96%; margin-left:2%;">
+        <div class="row mg-t-30">
+            <div class="col-md-4">
+                <label for="number">Number</label>
+                <input id="number" type="number" class="form-control" placeholder="Please enter integer between 1 and 100 to query">
+            </div>
+            <div class="col-md-4">
+                <button v-on:click="on_query" class="btn btn-primary mg-t-30">Query</button>
+            </div>
+        </div>
+        <div class="mg-t-30">
+            <table class="backstage-table">
+                <thead>
+                    <th style="width:25%;">Time (Server)</th>
+                    <th style="width:25%;">Number</th>
+                    <th style="width:25%;">Value</th>
+                    <th style="width:25%;">Occurrences</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>[[ datetime ]]</td>
+                        <td>[[ number ]]</td>
+                        <td>[[ value ]]</td>
+                        <td>[[ occurrences ]]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block page_js %}
+    <script type="text/javascript">
+        var main_vue;
+
+        $(document).ready(function(){
+            main_vue = new Vue({
+                delimiters: ['[[', ']]'],
+                el: '#main_div',
+                data: {
+                    datetime: '',
+                    number: '',
+                    value: '',
+                    occurrences: '',
+                },
+                methods: {
+                    on_query: function() {
+                        var _this = this;
+
+                        $.ajax({
+                            headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+                            url: '{% url "get-diff" %}',
+                            type: 'GET',
+                            data: {
+                                'number': $('#number').val(),
+                            },
+                            success: function(res) {
+                                _this.datetime = res['datetime'];
+                                _this.number = res['number'];
+                                _this.value = res['value'];
+                                _this.occurrences = res['occurrences'];
+                            },
+                            error: function(res) {
+                                res = res['responseText'];
+                                alert(res);
+                            }
+                        });
+                    }
+                }
+            });
+        });
+
+    </script>
+{% endblock %}
