@@ -1,6 +1,6 @@
-## Backstage Test ##
+<h1> Backstage Test </h1>
 
-###How to run ###
+<h2>How to run </h2>
 
 - Download and install python (>3.7). <br>
 https://www.python.org/downloads/ <br>
@@ -31,14 +31,15 @@ Type number in the input and click "query" button.
 The result will be shown in the table.
 
 
-### How it works ###
+<h2> How it works </h2>
 
 - This project uses sqlite3 for its database.
 - When the request is received, it first checks the database if the "number" is already stored.
 If then it adds 1 to the "occurrences" value of the "number" and return result.
 If "number" is not stored in the database, which means the "number" has not requested yet, calculate the different value (between the sum of the squares of the first n natural numbers and the square of the sum of the same first n natural numbers) and store it in the database.
 
-### Unit Test ###
+<h2> Unit Test </h2>
+
 `python manage.py test apps.service.tests.ServiceTestCase.test_service` <br>
 
 
